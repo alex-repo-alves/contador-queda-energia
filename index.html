@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: rgb(81, 85, 105);
+            font-size: 7vw;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin: auto 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+            color: rgb(243, 243, 243);
+        }
+
+        b {
+            font-family: Impact, Charcoal, sans-serif;
+            font-size: 9vw;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Estamos há <b>%%</b> dias sem falta de energia e desligamento do data center.</p>
+    <p>Nosso recorde é de <b>##</b> dias</p>
+
+    <script>
+        // Obter a data atual
+        var dataAtual = new Date();
+
+        // Criar uma nova data com o dia 06 de março de 2023
+        var dataBase = new Date(2023, 2, 6);
+
+        // Calcular a diferença em milissegundos entre as duas datas
+        var diferenca = dataAtual.getTime() - dataBase.getTime();
+
+        // Converter a diferença de milissegundos para dias
+        var dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+
+        // Substituir %% pelo número de dias calculado
+        var texto = document.querySelector('p:first-of-type').innerHTML;
+        texto = texto.replace(/%%/g, dias);
+        document.querySelector('p:first-of-type').innerHTML = texto;
+
+        // Adicionar nova variável
+        var valor = 11;
+
+        // Substituir "##" condicionalmente
+        var recorde = document.querySelector('p:nth-of-type(2)').innerHTML;
+        if (dias > valor) {
+            recorde = recorde.replace(/##/g, dias);
+        } else {
+            recorde = recorde.replace(/##/g, valor);
+        }
+        document.querySelector('p:nth-of-type(2)').innerHTML = recorde;
+    </script>
+
+</body>
+
+</html>
