@@ -68,6 +68,14 @@
             recorde = recorde.replace(/##/g, valor);
         }
         document.querySelector('p:nth-of-type(2)').innerHTML = recorde;
+        
+         // Define a função para atualizar a página
+        function atualizarPagina() {
+            location.reload();
+        }
+
+        // Chama a função a cada uma hora (3600000 milissegundos)
+        setInterval(atualizarPagina, 300000);
     </script>
 
 </body>
