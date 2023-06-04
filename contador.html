@@ -45,7 +45,9 @@
         var dataAtual = new Date();
 
         // Criar uma nova data com o dia 08 de março de 2023
-        var dataBase = new Date(2023, 2, 8);
+        // Criar uma nova data com o dia 03 de junho de 2023
+        //var dataBase = new Date(2023, 2, 8);
+        var dataBase = new Date(2023, 6, 3);
 
         // Calcular a diferença em milissegundos entre as duas datas
         var diferenca = dataAtual.getTime() - dataBase.getTime();
@@ -59,7 +61,8 @@
         document.querySelector('p:first-of-type').innerHTML = texto;
 
         // Adicionar nova variável
-        var valor = 30;
+        //var valor = 30;
+        var valor = 87;
 
         // Substituir "##" condicionalmente
         var recorde = document.querySelector('p:nth-of-type(2)').innerHTML;
