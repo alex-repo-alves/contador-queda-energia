@@ -51,8 +51,9 @@
         // Criar uma nova data com o dia 05 de junlo de 2023
         // Criar uma nova data com o dia 13 de julho de 2023
         // Criar uma nova data com o dia 19 de julho de 2023
+        // Criar uma nova data com o dia 30 de julho de 2023
         //var dataBase = new Date(2023, 2, 8);
-        var dataBase = new Date(2023, 6, 19);
+        var dataBase = new Date(2023, 6, 30);
 
         // Calcular a diferença em milissegundos entre as duas datas
         var diferenca = dataAtual.getTime() - dataBase.getTime();
@@ -63,6 +64,13 @@
         // Substituir %% pelo número de dias calculado
         var texto = document.querySelector('p:first-of-type').innerHTML;
         texto = texto.replace(/%%/g, dias);
+        document.querySelector('p:first-of-type').innerHTML = texto;
+
+        //Plural ou singular de dia
+        var textoDias = document.querySelector('p:first-of-type').innerHTML;
+        if (dias == 1) {
+            textoDias = textoDias.replace('dias', 'dia');
+        } 
         document.querySelector('p:first-of-type').innerHTML = texto;
 
         // Adicionar nova variável
