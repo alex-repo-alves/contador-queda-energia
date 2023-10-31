@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="meuIframe" src="./contador.html" frameborder="0" scrolling="no"></iframe>
+
+    <script>
+        var frames = [
+            'https://glpi.ifpa.edu.br/glpi/plugins/dashboard/front/metrics/index.php',
+            './contador.html'
+        ];
+    
+        var indiceFrame = 0;
+        var meuIframe = document.getElementById('meuIframe');
+    
+        setInterval(function() {
+          meuIframe.src = frames[indiceFrame];
+          indiceFrame++;
+          if (indiceFrame == frames.length) {
+            indiceFrame = 0;
+          }
+        }, 30000);
+      </script>
+
+</body>
+</html>

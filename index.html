@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,39 +9,98 @@
 
     <style>
         body {
-            margin: 0;
+            background-color: rgb(81, 85, 105);
+            font-size: 7vw;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin: auto 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
+        p {
+            margin: 0;
+            padding: 0;
+            color: rgb(243, 243, 243);
+        }
+
+        b {
+            font-family: Impact, Charcoal, sans-serif;
+            font-size: 9vw;
+            color: rgb(255, 255, 255);
         }
     </style>
 </head>
+
 <body>
-    <iframe id="meuIframe" src="./contador.html" frameborder="0" scrolling="no"></iframe>
+    <p>Estamos há <b>%%</b> dias sem falta de energia e desligamento do data center.</p>
+    <p>Nosso recorde é de <b>##</b> dias</p>
 
     <script>
-        var frames = [
-            'https://glpi.ifpa.edu.br/glpi/plugins/dashboard/front/metrics/index.php',
-            './contador.html'
-        ];
-    
-        var indiceFrame = 0;
-        var meuIframe = document.getElementById('meuIframe');
-    
-        setInterval(function() {
-          meuIframe.src = frames[indiceFrame];
-          indiceFrame++;
-          if (indiceFrame == frames.length) {
-            indiceFrame = 0;
-          }
-        }, 30000);
-      </script>
+        // Obter a data atual
+        var dataAtual = new Date();
+
+        // Criar uma nova data com o dia 08 de março de 2023
+        // Criar uma nova data com o dia 03 de junho de 2023
+        // Criar uma nova data com o dia 06 de junho de 2023
+        // Criar uma nova data com o dia 30 de junho de 2023
+        // Criar uma nova data com o dia 05 de junlo de 2023
+        // Criar uma nova data com o dia 13 de julho de 2023
+        // Criar uma nova data com o dia 19 de julho de 2023
+        // Criar uma nova data com o dia 30 de julho de 2023
+        // Criar uma nova data com o dia 15 de agosto de 2023
+        // Criar uma nova data com o dia 24 de agosto de 2023
+        // Criar uma nova data com o dia 30 de agosto de 2023
+        // Criar uma nova data com o dia 01 de outubro de 2023
+        // Criar uma nova data com o dia 11 de outubro de 2023
+        //var dataBase = new Date(2023, 2, 8);
+        var dataBase = new Date(2023, 9, 11);
+
+        // Calcular a diferença em milissegundos entre as duas datas
+        var diferenca = dataAtual.getTime() - dataBase.getTime();
+
+        // Converter a diferença de milissegundos para dias
+        var dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+
+        // Substituir %% pelo número de dias calculado
+        var texto = document.querySelector('p:first-of-type').innerHTML;
+        texto = texto.replace(/%%/g, dias);
+        document.querySelector('p:first-of-type').innerHTML = texto;
+
+        //Plural ou singular de dia
+        var textoDias = document.querySelector('p:first-of-type').innerHTML;
+        if (dias == 1) {
+            textoDias = textoDias.replace('dias', 'dia');
+        } 
+        document.querySelector('p:first-of-type').innerHTML = textoDias;
+
+        // Adicionar nova variável
+        //var valor = 30;
+        var valor = 87;
+
+        // Substituir "##" condicionalmente
+        var recorde = document.querySelector('p:nth-of-type(2)').innerHTML;
+        if (dias > valor) {
+            recorde = recorde.replace(/##/g, dias);
+        } else {
+            recorde = recorde.replace(/##/g, valor);
+        }
+        document.querySelector('p:nth-of-type(2)').innerHTML = recorde;
+
+        // Define a função para atualizar a página
+        function atualizarPagina() {
+            location.reload();
+        }
+
+        // Chama a função a cada uma hora (3600000 milissegundos)
+        setInterval(atualizarPagina, 300000);
+
+    </script>
 
 </body>
+
 </html>
